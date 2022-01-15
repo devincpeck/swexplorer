@@ -1,0 +1,18 @@
+<div class="attribute-list">
+
+  <ul class="products" *ngIf="person$ | async as p; else loading">
+    <!-- <li> -->
+        <p class="name">Name {{ p.name }}</p>
+        <p class="birth_year">Birth Year {{ p.birth_year }}</p>
+        <p class="gender">Gender {{ p.gender }}</p>
+        <p class="hair_color">Hair Color {{ p.hair_color }}</p>
+        <p class="height">Height {{ p.height }}</p>
+        <p class="mass">Mass {{ p.mass }}</p>
+        <p class="skin_color">Skin Color {{ p.skin_color }}</p>
+    <!-- </li> -->
+  </ul>
+</div>
+
+<ng-template #loading>
+  <h1 class="loading">Loading...</h1>
+</ng-template>
