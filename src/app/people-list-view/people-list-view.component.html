@@ -1,0 +1,15 @@
+<!-- <div>
+  {{ people$ | async }}
+</div>>
+ -->
+
+<ul class="people" *ngIf="people; else loading">
+  <li *ngFor="let person of people" (click)="onSelect(person)">
+    <mat-icon>person</mat-icon>
+    <span class="name">{{ person.name }}</span>
+  </li>
+</ul>
+
+<ng-template #loading>
+  <h1 class="loading">Loading...</h1>
+</ng-template>
