@@ -8,10 +8,21 @@
 .loading {
   /* margin-top: 1em;
   margin-left: 50px; */
-  margin: 1vw;
+  /* margin: 1vw; */
+  margin: 25% 50%;
   color:#FFE81F;
 }
 
+mat-cell:hover {
+  color: #607D8B;
+  background-color: rgb(224, 176, 43);
+  cursor: pointer;
+  /* left: 23.1em; */
+}
+
+mat-cell {
+  background-color: #f7f3c3;
+}
 
 .people {
   margin: 0;

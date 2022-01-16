@@ -20,6 +20,7 @@ export class PeopleListViewComponent implements OnInit {
   private start = 0;
   private end = this.pageSize;
   url: Observable<string>;
+  displayedColumns: string[] = ['name'];
 
   constructor(
     private swapiService: SwapiService,

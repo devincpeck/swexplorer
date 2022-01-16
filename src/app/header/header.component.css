@@ -1,11 +1,13 @@
 .header {
-  background-color: rgb(33, 145, 173);
+  background-color: rgb(224, 190, 36);
   padding: 5px;
 }
 
 .title {
-  text-align: center;
+  /* text-align: center; */
+  display: inline-flex;
   padding-left: 5px;
-  font-size: large;
+  font-size: larger;
   margin: auto;
+  color: #000;
 }

@@ -25,6 +25,8 @@ import { reducers, metaReducers } from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { addPersonUrlReducer } from './reducers/url.reducer';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -50,6 +52,8 @@ import { addPersonUrlReducer } from './reducers/url.reducer';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
+    MatProgressSpinnerModule,
+    MatTableModule,
     // StoreModule.forRoot(reducers, { metaReducers }),
     // !environment.production ? StoreDevtoolsModule.instrument() : []
     StoreModule.forRoot({url: addPersonUrlReducer})
