@@ -1,4 +1,12 @@
-title: string;
-director: string;
-producer: string;
-release_date: number;
+<div class="attribute-list" *ngIf="movie$ | async as p; else loading">
+  <ul class="list" *ngIf="movie$ | async as p; else loading">
+        <h1 class="name">{{ p.title }}</h1>
+        <span class="attribute">Director: </span><span class="value">{{ p.director }}</span>
+        <p><span class="attribute">Producer(s): </span><span class="value">{{ p.producer }}</span></p>
+        <p><span class="attribute">Release Date: </span><span class="value">{{ p.release_date }}</span></p>
+  </ul>
+</div>
+
+<ng-template #loading>
+  <mat-spinner class="loading" [diameter]="50"></mat-spinner>
+</ng-template>

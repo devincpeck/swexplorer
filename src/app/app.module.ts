@@ -12,34 +12,21 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { PeopleListViewComponent } from './people-list-view/people-list-view.component';
-import { PlanetsListViewComponent } from './planets-list-view/planets-list-view.component';
-import { MoviesListViewComponent } from './movies-list-view/movies-list-view.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
-import { PersonDetailViewComponent } from './person-detail-view/person-detail-view.component';
-import { PlanetDetailViewComponent } from './planet-detail-view/planet-detail-view.component';
-import { MovieDetailViewComponent } from './movie-detail-view/movie-detail-view.component';
 import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from './reducers';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from '../environments/environment';
-import { addPersonUrlReducer } from './reducers/url.reducer';
+import { addUrlReducer } from './reducers/url.reducer';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTableModule } from '@angular/material/table';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ErrorComponent,
-    PeopleListViewComponent,
-    PlanetsListViewComponent,
-    MoviesListViewComponent,
-    HeaderComponent,
-    PersonDetailViewComponent,
-    PlanetDetailViewComponent,
-    MovieDetailViewComponent
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -54,9 +41,9 @@ import { MatTableModule } from '@angular/material/table';
     MatListModule,
     MatProgressSpinnerModule,
     MatTableModule,
-    // StoreModule.forRoot(reducers, { metaReducers }),
-    // !environment.production ? StoreDevtoolsModule.instrument() : []
-    StoreModule.forRoot({url: addPersonUrlReducer})
+    MatSlideToggleModule,
+    SharedModule,
+    StoreModule.forRoot({url: addUrlReducer})
   ],
   providers: [],
   bootstrap: [AppComponent]

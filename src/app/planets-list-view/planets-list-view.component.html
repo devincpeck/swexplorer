@@ -1,1 +1,4 @@
-<p>planets works!</p>
+<app-list-view
+  [data]="planets"
+  (selected)="onSelect($event)"
+></app-list-view>

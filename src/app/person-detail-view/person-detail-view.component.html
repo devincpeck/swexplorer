@@ -1,18 +1,15 @@
-<div class="attribute-list">
-
-  <ul class="products" *ngIf="person$ | async as p; else loading">
-    <!-- <li> -->
-        <p class="name">Name {{ p.name }}</p>
-        <p class="birth_year">Birth Year {{ p.birth_year }}</p>
-        <p class="gender">Gender {{ p.gender }}</p>
-        <p class="hair_color">Hair Color {{ p.hair_color }}</p>
-        <p class="height">Height {{ p.height }}</p>
-        <p class="mass">Mass {{ p.mass }}</p>
-        <p class="skin_color">Skin Color {{ p.skin_color }}</p>
-    <!-- </li> -->
+<div class="attribute-list" *ngIf="person$ | async as p; else loading">
+  <ul class="list" *ngIf="person$ | async as p; else loading">
+        <h1 class="name">{{ p.name }}</h1>
+        <span class="attribute">Birth Year: </span><span class="value">{{ p.birth_year }}</span>
+        <p><span class="attribute">Gender: </span><span class="value">{{ p.gender }}</span></p>
+        <p><span class="attribute">Hair Color: </span><span class="value">{{ p.hair_color }}</span></p>
+        <p><span class="attribute">Height: </span><span class="value">{{ p.height }}</span></p>
+        <p><span class="attribute">Mass: </span><span class="value">{{ p.mass }}</span></p>
+        <p><span class="attribute">Skin Color: </span><span class="value">{{ p.skin_color }}</span></p>
   </ul>
 </div>
 
 <ng-template #loading>
-  <h1 class="loading">Loading...</h1>
+  <mat-spinner class="loading" [diameter]="50"></mat-spinner>
 </ng-template>

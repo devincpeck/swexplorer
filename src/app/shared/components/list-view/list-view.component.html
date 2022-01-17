@@ -1,0 +1,10 @@
+<mat-table [dataSource]="data" class="mat-elevation-z8" *ngIf="data; else loading">
+  <ng-container matColumnDef="name">
+    <mat-cell mat-cell class="cell" *matCellDef="let element" (click)="onSelect(element)"><mat-icon>person</mat-icon> {{element.name}} </mat-cell>
+  </ng-container>
+  <mat-row matRipple *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+
+<ng-template #loading>
+  <mat-spinner class="loading" [diameter]="50"></mat-spinner>
+</ng-template>

@@ -5,7 +5,7 @@ import { Person } from '../shared/models/person.interface';
 import { Planet } from '../shared/models/planet.interface';
 import { Movie } from '../shared/models/movie.interface';
 import { SwapiResponse } from '../shared/models/swapi-response.interface';
-import { catchError, shareReplay } from 'rxjs/operators';
+import { catchError, map, shareReplay } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -13,34 +13,16 @@ import { catchError, shareReplay } from 'rxjs/operators';
 export class SwapiService {
 
   private baseUrl = 'https://swapi.dev/api/';
-  people: Person[];
-  planets: Planet[];
-  movies: Movie[];
   private url: string;
 
   constructor(private httpClient: HttpClient) { }
 
-  // getPeople(): Observable<Person[]> {
-  getPeople(): Person[] {
-    this.url = this.baseUrl + `people/`;
-    this.httpClient.get<SwapiResponse>(this.url).subscribe(
-      (data: SwapiResponse) => {
-        this.people = data.results;
-      }
-    );
-    return this.people;
-  }
-
-  getPlanets(): Planet[] {
-    this.url = this.baseUrl + `planets/`;
-    this.httpClient.get<SwapiResponse>(this.url).subscribe(
-      (response) => {
-        this.planets = response.results;
-      }
-    );
-    return this.planets;
-  }
-
+  /**
+   * Get a specific planet from the SW API.
+   *
+   * @param url the url of the planet
+   * @returns an Observable of a planet
+   */
   getPlanet(url: string): Observable<Planet> {
     return this.httpClient.get<Planet>(url)
       .pipe(
@@ -49,16 +31,26 @@ export class SwapiService {
       );
   }
 
-  getMovies(): Movie[] {
-    this.url = this.baseUrl + `films/`;
-    this.httpClient.get<SwapiResponse>(this.url).subscribe(
-      (response) => {
-        this.movies = response.results;
-      }
-    );
-    return this.movies;
+  /**
+   * Get all planets from the SW API.
+   *
+   * @returns a typed response from the API including the results
+   */
+  getPlanets(): Observable<SwapiResponse> {
+    this.url = this.baseUrl + `planets/`;
+    return this.httpClient.get<SwapiResponse>(this.url)
+      .pipe(
+        shareReplay(),
+        catchError(this.handleError)
+      );
   }
 
+  /**
+   * Get a specific movie from the SW API.
+   *
+   * @param url the url of the movie
+   * @returns an Observable of a movie
+   */
   getMovie(url: string): Observable<Movie> {
     return this.httpClient.get<Movie>(url)
       .pipe(
@@ -67,13 +59,42 @@ export class SwapiService {
       );
   }
 
-  getPeople2(): Observable<SwapiResponse> {
-    this.url = this.baseUrl + `people/`;
-    return this.httpClient.get<SwapiResponse>(this.url);
+  /**
+   * Get all movies from the SW API.
+   *
+   * @returns a typed response from the API including the results
+   */
+  getMovies(): Observable<SwapiResponse> {
+    this.url = this.baseUrl + `films/`;
+    return this.httpClient.get<SwapiResponse>(this.url)
+      .pipe(
+        shareReplay(),
+        catchError(this.handleError)
+      );
   }
 
+  /**
+   * Get a specific person from the SW API.
+   *
+   * @param url the url of the person
+   * @returns an Observable of a person
+   */
   getPerson(url: string): Observable<Person> {
     return this.httpClient.get<Person>(url)
+      .pipe(
+        shareReplay(),
+        catchError(this.handleError)
+      );
+  }
+
+  /**
+   * Get all people from the SW API.
+   *
+   * @returns a typed response from the API including the results
+   */
+  getPeople(): Observable<SwapiResponse> {
+    this.url = this.baseUrl + `people/`;
+    return this.httpClient.get<SwapiResponse>(this.url)
       .pipe(
         shareReplay(),
         catchError(this.handleError)
@@ -92,4 +113,3 @@ export class SwapiService {
     return throwError('Something bad happened; please try again later.');
   }
 }
-

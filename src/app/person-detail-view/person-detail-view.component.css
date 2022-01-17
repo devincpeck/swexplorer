@@ -1,3 +1,22 @@
 .attribute-list {
   color: rgb(21, 22, 24);
 }
+
+.loading {
+  margin: 25% 50%;
+}
+
+.attribute {
+  font-style: italic;
+  color:rgb(104, 104, 104);
+}
+
+.value {
+  font-style: normal;
+  font-size: large;
+  font-weight: bold;
+}
+
+ul {
+  padding-inline-start: 20px;
+}

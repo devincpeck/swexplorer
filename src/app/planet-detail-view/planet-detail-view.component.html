@@ -1,3 +1,11 @@
-name: string;
-population: string;
-terrain: string;
+<div class="attribute-list" *ngIf="planet$ | async as p; else loading">
+  <ul class="list" *ngIf="planet$ | async as p; else loading">
+        <h1 class="name">{{ p.name }}</h1>
+        <span class="attribute">Population: </span><span class="value">{{ p.population }}</span>
+        <p><span class="attribute">Terrain: </span><span class="value">{{ p.terrain }}</span></p>
+  </ul>
+</div>
+
+<ng-template #loading>
+  <mat-spinner class="loading" [diameter]="50"></mat-spinner>
+</ng-template>

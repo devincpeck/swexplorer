@@ -1,5 +1,27 @@
 # SWExplorerPeck
 
+## Installation
+
+Clone project and navigate to directory. Run `npm i`: note that this project uses Angular 11 which may cause issues if the local version on your machine is greater. Run `ng s -o` to launch the application.
+
+Alternatively, navigate to `https://devincpeck.github.io/` to use the app.
+
+This project demonstrates the use of services and dependency injection (swapi.service.ts), a shared module, rxjs/async patterns, smart and presentational components (one generic presentation list component for all 3 smart components), lazy loading, state management with the ngrx store, and scss.
+
+## Future Improvements
+
+I ran out of time to implement the following, but I think these would lead to both a better user experience as well as more efficient and modular code:
+- genericize the detail view components or at least split them into smart and presentation components like I did with the list components
+- adding paging for lists of objects
+- addding better 'back' navigation, either by adding a clickable arrow in the header or by adding a menu instead of a home button, etc.
+- improving the scss
+- adding a dark/light theme switching that uses star wars colours. i tried to do a bit of black + star wars yellow in the header
+- adding tests
+- maybe add a pipe for some of the data, eg some planet populations are hard to read like 1000000000000 for coruscant
+- general cleanup!
+
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.4.
 
 ## Development server
