@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MoviesListViewComponent } from './movies-list-view.component';
 import { MovieDetailViewComponent } from '../movie-detail-view/movie-detail-view.component';
 import { MoviesRoutingModule } from './movies-routing.module';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [MoviesListViewComponent, MovieDetailViewComponent],
@@ -15,7 +16,8 @@ import { MoviesRoutingModule } from './movies-routing.module';
     SharedModule,
     MatTableModule,
     MatIconModule,
-    MoviesRoutingModule
+    MoviesRoutingModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     SwapiService
