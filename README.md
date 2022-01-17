@@ -3,6 +3,7 @@
 ## Installation
 
 Clone project and navigate to directory. Run `npm i`: note that this project uses Angular 11 which may cause issues if the local version on your machine is greater. Run `ng s -o` to launch the application.
+Additionally, I ran into issues when trying to use Node v17. I solved this by installing `v16.13.2` and running `nvm use --lts` to set the version to v16.
 
 Alternatively, navigate to `https://devincpeck.github.io/` to use the app.
 
